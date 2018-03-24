@@ -20,11 +20,11 @@ class NavBar extends Component {
     }
     return (
       <Menu.Menu position='right'>
-        <Link to='/register'>
+        {/* <Link to='/register'>
           <Menu.Item name='Register' />
-        </Link>
+        </Link> */}
         <Link to='/login'>
-          <Menu.Item name='Login' />
+          <Menu.Item name='Admin Login' />
         </Link>
       </Menu.Menu>
     );
@@ -36,6 +36,15 @@ class NavBar extends Component {
         <Menu pointing secondary>
           <Link to='/'>
             <Menu.Item name='home' />
+          </Link>
+          <Link to='/Menu'>
+            <Menu.Item name='Menu' />
+          </Link>
+          <Link to='/'>
+            <Menu.Item name='Order' />
+          </Link>
+          <Link to='/'>
+            <Menu.Item name='My Cart' />
           </Link>
           { this.rightNavs() }
         </Menu>
