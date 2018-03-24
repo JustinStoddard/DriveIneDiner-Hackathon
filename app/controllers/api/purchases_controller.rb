@@ -10,13 +10,24 @@ class Api::PurchasesController < ApplicationController
   end
 
   def create
-    
+    purchase = Purchase.create(purchase_params)
+    if purchase.save
+      render json :purchase
+    else 
+      render json: { errors: purchase.errors.full_messages.join(',') }, status: 422
+    end
   end
 
   def update
+    if @purchase.update(purchase_params)
+      render json: @purchase
+    else
+      render json: { errors: purchase.erros.full_messages.join }
+    end
   end
 
   def destroy
+    @purchase.destroy
   end
 
 private
