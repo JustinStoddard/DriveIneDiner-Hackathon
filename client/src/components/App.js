@@ -12,6 +12,7 @@ import { Switch, Route } from 'react-router-dom';
 import Menu from './Menu';
 import Cart from './Cart';
 import About from './About';
+import Order from './Order';
 
 class App extends Component {
   render() {
@@ -27,6 +28,7 @@ class App extends Component {
             <Route exact path='/About' component={About} />
             <AuthRoute exact path='/login' component={Login} />
             <AuthRoute exact path='/register' component={Register} />
+            <ProtectedRoute exact path ='/orders' component={Order} />
             <Route component={NoMatch} />
           </Switch>
         </FetchUser>
