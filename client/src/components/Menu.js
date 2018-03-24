@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Header, Card, Image, Container, Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import { getItems } from '../actions/items';
+import { getItems, deleteItem, updateItem } from '../actions/items';
 import ItemForm from './ItemForm'
 
 class Menu extends React.Component {
@@ -10,6 +10,14 @@ class Menu extends React.Component {
 
   componentDidMount() {
     this.props.dispatch(getItems())
+  }
+
+  menuDelete = (id) => {
+    this.props.dispatch(deleteItem(id))
+  }
+
+  itemUpdate = (id) => {
+    this.props.dispatch(updateItem(id))
   }
 
 
@@ -37,8 +45,13 @@ class Menu extends React.Component {
                   </Card.Content>
                   <Card.Content extra>
                   <div className='ui two buttons'>
-                    <Button basic color='green'>Add to cart</Button>
+                    <Button basic color='green' onClick={() => this.itemUpdate(item.id)}>Add to cart</Button>
                   </div>
+                  <Button.Group size='large' textAlign='center'>
+                    <Button>Update</Button>
+                    <Button.Or />
+                    <Button negative onClick={() => this.menuDelete(item.id)} >Delete</Button>
+                  </Button.Group>
                 </Card.Content>
               </Card>
             )}
