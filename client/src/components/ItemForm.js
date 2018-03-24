@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Header, Segment, Form, Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import {addItem, updateItem} from '../actions/items'
 
 class ItemForm extends Component {
   state = { name: '', description: '', price: '' };
@@ -11,11 +12,12 @@ class ItemForm extends Component {
     this.setState({ [id]: value });
   }
 
-  handleSubmit = event => {
-    event.preventDefault();
-    const { dispatch, history } = this.props;
-    const { name, description } = this.state;
-    // dispatch(handleLogin(name, description, history));
+  handleSubmit = (e) => {
+    e.preventDefault()
+    const item = {...this.state}
+    const { dispatch } = this.props
+    const func = this.props.id ? updateItem : addItem
+    dispatch(func(item))
   }
 
   render() {
@@ -56,7 +58,11 @@ class ItemForm extends Component {
               />
             </Form.Field>
             <Segment textAlign='center' basic>
-              <Button primary type='submit'>Submit</Button>
+              <Button 
+                primary type='submit'
+                onSubmit= {this.handleSubmit} 
+              > Submit
+              </Button>
             </Segment>
           </Form>
         </Segment>

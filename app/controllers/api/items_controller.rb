@@ -35,7 +35,7 @@ private
     @item = Item.find(params[:id])
   end
 
-  def item_item_params
+  def item_params
     params.require(:item).permit(:name, :description, :price, :item_id)
   end
 

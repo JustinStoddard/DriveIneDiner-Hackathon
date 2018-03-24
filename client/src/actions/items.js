@@ -17,7 +17,7 @@ export const getItems = callback => {
 
 export const addItem = (item) => {
   return (dispatch) => {
-    axios.item('/api/items', { item } )
+    axios.post('/api/items', { item } )
      .then( res => dispatch({ type: ADD_ITEM, item: res.data }) )
   }
 }
