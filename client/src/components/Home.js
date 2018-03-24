@@ -1,16 +1,26 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
-import { Header } from 'semantic-ui-react';
-import { About } from './About'
-=======
 import { Header, Button, Container, Divider } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
->>>>>>> working on navbar
 
 class Home extends Component {
   render() {
     return (
-      <Header as='h1' textAlign='center'>Dragon Diner</Header>
+      <Container textAlign="center">
+        <Header as='h1' textAlign='center'>Dragon Diner</Header>
+        <Divider hidden />
+          <Link to='./Menu'>
+            <Button> Menu </Button>
+          </Link>
+          <Divider hidden />
+          <Link to='./Cart'>
+            <Button> My Cart </Button>
+          </Link>
+          <Divider hidden />
+          <Link to='./About'>
+            <Button> About </Button>
+          </Link>
+      </Container>
     );
   }
 }
