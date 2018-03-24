@@ -6,12 +6,13 @@ export const DELETE_ITEM = "DELETE_ITEM"
 
 
 export const getItems = callback => {
+  debugger
   return (dispatch) => {
     axios.get('/api/items')
       .then( res => dispatch({ type: ITEMS, items: res.data }))
-      .then(callback)
+      // .then(callback)
   }
-  
+
 }
 
 export const addItem = (item) => {

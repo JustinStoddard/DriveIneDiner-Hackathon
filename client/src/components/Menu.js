@@ -2,21 +2,18 @@ import React, { Component } from 'react'
 import { Header, Card, Image, Container, Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import { getItems } from '../actions/items';
 
 class Menu extends React.Component {
-  state = { items: [] }
+  // state = { items: [] }
 
   componentDidMount() {
-    const { dispatch } = this.props;
-    axios.get('./api/Menu')
-    .then( res => {
-      this.setState({ items: res.data })
-    })
+    this.props.dispatch(getItems())
   }
 
 
   render() {
-    const { items } = this.state
+    const { items } = this.props
     return(
       <Container>
         <Header as='h1' textAlign='center'>Menu Items</Header>
@@ -33,7 +30,7 @@ class Menu extends React.Component {
                   {item.description}
                 </Card.Description>
                 <Card.Meta>
-                  {item.price}
+                  ${item.price}
                 </Card.Meta>
                 </Card.Content>
                 <Card.Content extra>
@@ -49,5 +46,8 @@ class Menu extends React.Component {
     )
   }
 }
+const mapStateToProps = (state) => {
+ return { items: state.items }
+}
 
-export default connect()(Menu);
+export default connect(mapStateToProps)(Menu);

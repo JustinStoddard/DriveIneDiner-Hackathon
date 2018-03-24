@@ -4,7 +4,7 @@ class Api::CartsController < ApplicationController
   def index
     render json: Carts.all
   end
-  
+
   def show
     render json: @cart
   end
@@ -13,7 +13,7 @@ class Api::CartsController < ApplicationController
     cart = cart.create(cart_params)
     if cart.save
       render json :cart
-    else 
+    else
       render json: { errors: cart.errors.full_messages.join(',') }, status: 422
     end
   end
