@@ -16,9 +16,7 @@ ActiveRecord::Schema.define(version: 20180324162450) do
   enable_extension "plpgsql"
 
   create_table "carts", force: :cascade do |t|
-    t.integer "cart_id"
     t.float "total"
-    t.integer "purchase_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -27,7 +25,6 @@ ActiveRecord::Schema.define(version: 20180324162450) do
     t.string "name"
     t.string "description"
     t.float "price"
-    t.integer "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -36,7 +33,8 @@ ActiveRecord::Schema.define(version: 20180324162450) do
     t.string "name"
     t.string "price"
     t.integer "quantity"
-    t.integer "purchase_id"
+    t.integer "item_id"
+    t.integer "cart_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
