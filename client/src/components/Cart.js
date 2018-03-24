@@ -5,7 +5,7 @@ class Cart extends Component {
   render() {
     return (
       <Header as='h1' textAlign='center'>My Cart</Header>
-    );
+    )
   }
 }
 
