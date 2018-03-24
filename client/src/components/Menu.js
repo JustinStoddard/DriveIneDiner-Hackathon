@@ -16,34 +16,41 @@ class Menu extends React.Component {
   render() {
     const { items } = this.props
     return(
-      <Container>
-        <Header as='h1' textAlign='center'>Menu Items</Header>
-        <div>
-        <Card.Group itemsPerRow={4}>
-          {items.map(item =>
-            <Card key={item.id}>
-              <Card.Content>
-                <Image floated='right' size='mini' src='' />
-                <Card.Header>
-                  {item.name}
-                </Card.Header>
-                <Card.Description>
-                  {item.description}
-                </Card.Description>
-                <Card.Meta>
-                  ${item.price}
-                </Card.Meta>
+      <div>
+        <Container>
+          <Header as='h1' textAlign='center'>Menu Items</Header>
+          <div>
+          <Card.Group itemsPerRow={4}>
+            {items.map(item =>
+              <Card key={item.id}>
+                <Card.Content>
+                  <Image floated='right' size='mini' src='' />
+                  <Card.Header>
+                    {item.name}
+                  </Card.Header>
+                  <Card.Description>
+                    {item.description}
+                  </Card.Description>
+                  <Card.Meta>
+                    ${item.price}
+                  </Card.Meta>
+                  </Card.Content>
+                  <Card.Content extra>
+                  <div className='ui two buttons'>
+                    <Button basic color='green'>Add to cart</Button>
+                  </div>
                 </Card.Content>
-                <Card.Content extra>
-                <div className='ui two buttons'>
-                  <Button basic color='green'>Add to cart</Button>
-                </div>
-              </Card.Content>
-            </Card>
-          )}
-        </Card.Group>
-        </div>
-      </Container>
+              </Card>
+            )}
+          </Card.Group>
+          </div>
+        </Container>
+        <br />
+        <br />
+        <Container>
+          <ItemForm />
+        </Container>
+      </div>
     )
   }
 }

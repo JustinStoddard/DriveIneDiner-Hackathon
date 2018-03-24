@@ -42,7 +42,6 @@ class ItemForm extends Component {
                 id='description'
                 value={description}
                 placeholder='Delectible Dragon Dumplings'
-                type='description'
                 onChange={this.handleChange}
               />
             </Form.Field>
@@ -53,7 +52,6 @@ class ItemForm extends Component {
                 id='price'
                 value={price}
                 placeholder='9.99'
-                type='price'
                 onChange={this.handleChange}
               />
             </Form.Field>
@@ -68,9 +66,8 @@ class ItemForm extends Component {
 }
 
 const ItemUpdateForm = styled.div`
-  background: peach;
-  width: 50%;
-  float: left;
+  background: #9fbfdf;
+  width: 100%;
 `
 
 export default connect()(ItemForm);
