@@ -3,6 +3,7 @@ import { Header, Card, Image, Container, Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { getItems } from '../actions/items';
+import ItemForm from './ItemForm'
 
 class Menu extends React.Component {
   // state = { items: [] }

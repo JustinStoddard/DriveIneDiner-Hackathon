@@ -1,40 +1,76 @@
-import React from 'react'
+import React, { Component } from 'react';
+import { Header, Segment, Form, Button } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import styled from 'styled-components';
 
+class ItemForm extends Component {
+  state = { name: '', description: '', price: '' };
 
+  handleChange = event => {
+    const { id, value } = event.target;
+    this.setState({ [id]: value });
+  }
 
-<Form onSubmit={this.handleSubmit}>
-  <Form.Field>
-  <label htmlFor='name'>Item Name</label>
-  <input
-    id='name'
-    placeholder='Item Name'
-    required
-    value={name}
-    onChange={this.handleChange}
-  />
-  </Form.Field>
-  <Form.Field>
-    <label htmlFor='Price'>Item Price</label>
-    <input
-      id='Price'
-      placeholder='Item Price'
-      required
-      value={Price}
-      onChange={this.handleChange}
-    />
-  </Form.Field>
-  <Form.Field>
-    <label htmlFor='description'>Item Description</label>
-    <input
-      id='description'
-      placeholder='Item Description'
-      type='description'
-      required
-      value={description}
-      onChange={this.handleChange}
-    />
-  </Form.Field>
-  <Segment basic textAlign='center'>
-    <Button type='submit'>Submit</Button>
-  </Segment>
-</Form>
+  handleSubmit = event => {
+    event.preventDefault();
+    const { dispatch, history } = this.props;
+    const { name, description } = this.state;
+    // dispatch(handleLogin(name, description, history));
+  }
+
+  render() {
+    const { name, description, price } = this.state;
+    return (
+      <ItemUpdateForm>
+        <Segment basic>
+          <Header as='h1'>Add Menu Item</Header>
+          <Form onSubmit={this.handleSubmit}>
+            <Form.Field>
+              <label htmlFor='name'>Menu Item Name</label>
+              <input
+                required
+                id='name'
+                value={name}
+                placeholder='Dragon Dumplings'
+                onChange={this.handleChange}
+              />
+            </Form.Field>
+            <Form.Field>
+              <label htmlFor='description'>Menu Item Description</label>
+              <input
+                required
+                id='description'
+                value={description}
+                placeholder='Delectible Dragon Dumplings'
+                type='description'
+                onChange={this.handleChange}
+              />
+            </Form.Field>
+            <Form.Field>
+              <label htmlFor='price'>Menu Item Price</label>
+              <input
+                required
+                id='price'
+                value={price}
+                placeholder='9.99'
+                type='price'
+                onChange={this.handleChange}
+              />
+            </Form.Field>
+            <Segment textAlign='center' basic>
+              <Button primary type='submit'>Submit</Button>
+            </Segment>
+          </Form>
+        </Segment>
+      </ItemUpdateForm>
+    );
+  }
+}
+
+const ItemUpdateForm = styled.div`
+  background: peach;
+  width: 50%;
+  float: left;
+`
+
+export default connect()(ItemForm);
